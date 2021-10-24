@@ -14,8 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="the answer is False"
-        android:inputType="date"
+        android:hint="the answer is always True ;>"
         android:selectAllOnFocus="false"
         android:singleLine="false"
         android:text="QUIZ"
@@ -29,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="24dp"
-        android:text="@string/question_text"
+        android:text="@string/question_text2"
         android:textAlignment="center"
         android:textColor="#E11010"
         android:textSize="34sp" />
@@ -40,16 +39,16 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/true_button"
+            android:id="@+id/true_button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/true_Button"
             android:textColor="@android:color/holo_red_light"
-          />
+            />
 
         <Button
-            android:id="@+id/false_button"
+            android:id="@+id/false_button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -62,12 +61,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"/>
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/buttonForGo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Next" />
+    </LinearLayout>
 
 </LinearLayout>
