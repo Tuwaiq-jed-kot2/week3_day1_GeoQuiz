@@ -20,12 +20,18 @@ class MainActivity : AppCompatActivity() {
 
 //        As it said in Android documentation about Toast setGravity method, this method doesn't work anymore for devices
 //        running API30 or higher.
+
+        //wrote it for the effort :)
         falseButton.setOnClickListener {
-            Toast.makeText(this,R.string.incorrect_toast,Toast.LENGTH_SHORT).show()
+            val falseToast = Toast.makeText(this,R.string.incorrect_toast,Toast.LENGTH_LONG)
+            falseToast.setGravity(Gravity.TOP,0,0)
+            falseToast.show()
         }
 
         trueButton.setOnClickListener {
-            Toast.makeText(this,R.string.correct_toast,Toast.LENGTH_LONG).show()
+            val trueToast = Toast.makeText(this,R.string.correct_toast,Toast.LENGTH_LONG)
+            trueToast.setGravity(Gravity.TOP,0,0)
+            trueToast.show()
         }
 
 
