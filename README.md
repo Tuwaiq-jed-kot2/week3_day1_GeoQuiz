@@ -5,6 +5,7 @@ In the GeoQuize app:
 2 -text color 
 3- give margin to the buttons
 ---------------------------------------------
+
 Part2: 
 Customizing the Toast 
 For this challenge, customize the toast to show at the top instead of the bottom of the screen.

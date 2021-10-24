@@ -2,8 +2,10 @@ package com.example.geoquiz
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.Button
 import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,11 +20,18 @@ class MainActivity : AppCompatActivity() {
         trueButton = findViewById(R.id.true_button)
 
         falseButton.setOnClickListener {
-            Toast.makeText(this,R.string.incorrect_toast,Toast.LENGTH_LONG).show()
+            val ToasT = Toast.makeText(this,R.string.incorrect_toast,Toast.LENGTH_SHORT)
+           // Toast.makeText(this,R.string.incorrect_toast, LENGTH_SHORT).show()
+            ToasT.setGravity(Gravity.TOP,0,300)
+            ToasT.show()
+
         }
 
         trueButton.setOnClickListener {
             Toast.makeText(this,R.string.correct_toast,Toast.LENGTH_LONG).show()
+
+            val trueToast = Toast.makeText(this,R.string.correct_toast,Toast.LENGTH_LONG)
+
         }
 
     }
