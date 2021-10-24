@@ -12,12 +12,14 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="19dp"
+        android:background="#4CAF50"
+        android:bakcground="#869932"
         android:padding="24dp"
         android:text="@string/question_text"
         android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="24sp" />
-
+        android:textColor="#E91E63"
+        android:textSize="40dp" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,14 +29,23 @@
             android:id="@+id/true_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_weight="1"
-            android:text="@string/true_button" />
+            android:text="@string/true_button"
+            android:textColor="#000000"
+            android:bakcground="#869932"
+            android:textSize="40dp" />
 
         <Button
             android:id="@+id/false_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_weight="1"
-            android:text="@string/false_button" />
+            android:background="#F44336"
+            android:text="@string/false_button"
+
+            android:textColor="#000000"
+            android:textSize="40dp" />
     </LinearLayout>
 </LinearLayout>
