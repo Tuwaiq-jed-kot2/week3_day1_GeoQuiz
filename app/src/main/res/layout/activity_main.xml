@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="clip_horizontal|center"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -12,29 +12,54 @@
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#F6F1FF"
         android:padding="24dp"
         android:text="@string/question_text"
         android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="24sp" />
+        android:textColor="#F10000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="252dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:orientation="horizontal"
+        android:outlineAmbientShadowColor="#3C3636">
 
         <Button
             android:id="@+id/true_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="76dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_margin="16dp"
             android:layout_weight="1"
-            android:text="@string/true_button" />
+            android:gravity="center_vertical"
+            android:text="@string/true_button"
+            android:textColor="#9E70D6"
+            android:textSize="18sp"
+            android:textStyle="normal|bold"
+            android:typeface="normal" />
 
         <Button
             android:id="@+id/false_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="76dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_margin="16dp"
             android:layout_weight="1"
-            android:text="@string/false_button" />
+            android:background="#E5E7F3"
+            android:backgroundTint="#D3B2B2"
+            android:ellipsize="start"
+            android:gravity="center_vertical"
+            android:nestedScrollingEnabled="false"
+            android:text="@string/false_button"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#9F6DD9"
+            android:textIsSelectable="false"
+            android:textStyle="normal|bold"
+            android:typeface="normal"
+                       />
     </LinearLayout>
 </LinearLayout>
