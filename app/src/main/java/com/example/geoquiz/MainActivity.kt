@@ -19,10 +19,17 @@ class MainActivity : AppCompatActivity() {
 
         falseButton.setOnClickListener {
             Toast.makeText(this,R.string.incorrect_toast,Toast.LENGTH_LONG).show()
+            val toast = Toast.makeText(this,R.string.correct_toast,Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.TOP , 0, 0)
+            toast.show()
         }
 
         trueButton.setOnClickListener {
             Toast.makeText(this,R.string.correct_toast,Toast.LENGTH_LONG).show()
+            val toast = Toast.makeText(this,R.string.incorrect_toast,Toast.LENGTH_SHORT)
+            toast.setGravity(Gravity.TOP , 0, 0)
+            toast.show()
+
         }
 
     }
