@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import android.view.Gravity
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,13 +21,22 @@ class MainActivity : AppCompatActivity() {
         falseButton = findViewById(R.id.false_button)
         trueButton = findViewById(R.id.true_button)
 
+        
+
+
+
         falseButton.setOnClickListener {
-            Toast.makeText(this,R.string.incorrect_toast,Toast.LENGTH_LONG).show()
+            val toast :Toast=  Toast.makeText(this,R.string.incorrect_toast,Toast.LENGTH_LONG)
+                  toast.setGravity(Gravity.TOP,0,250)
+                    toast.show()
         }
 
         trueButton.setOnClickListener {
-            Toast.makeText(this,R.string.correct_toast,Toast.LENGTH_LONG).show()
+           val toast :Toast= Toast.makeText(this,R.string.correct_toast,Toast.LENGTH_LONG)
+               toast.setGravity(Gravity.TOP,0,250)
+                 toast.show()
         }
+
 
     }
 }
