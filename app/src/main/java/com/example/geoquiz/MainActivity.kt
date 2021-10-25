@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import android.view.Gravity
+
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,7 +27,9 @@ class MainActivity : AppCompatActivity() {
 
         trueButton.setOnClickListener {
             Toast.makeText(this,R.string.correct_toast,Toast.LENGTH_LONG).show()
+            //Toast.setGravity(Gravity.TOP , 0, 0)
         }
+
 
     }
 }

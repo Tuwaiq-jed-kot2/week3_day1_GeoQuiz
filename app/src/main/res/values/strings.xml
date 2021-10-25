@@ -4,8 +4,8 @@
     <string name="question_text"> the capital of KSA is Hail  </string>
     <string name="true_button">True</string>
     <string name="false_button">False</string>
-    <string name="correct_toast">Correct !!</string>
-    <string name="incorrect_toast">Incorrect!!</string>
+    <string name="correct_toast">Incorrect !!</string>
+    <string name="incorrect_toast">Correct!!</string>
 
 
 </resources>
