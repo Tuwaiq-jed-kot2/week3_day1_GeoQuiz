@@ -15,8 +15,10 @@
         android:padding="24dp"
         android:text="@string/question_text"
         android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="24sp" />
+        android:textColor="#222222"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -25,16 +27,32 @@
 
         <Button
             android:id="@+id/true_button"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/cardview_compat_inset_shadow"
             android:layout_weight="1"
-            android:text="@string/true_button" />
+            android:backgroundTint="#4CAF50"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:text="@string/true_button"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFFFF"
+            android:textSize="16sp"
+            tools:ignore="TextContrastCheck" />
 
         <Button
             android:id="@+id/false_button"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/cardview_compat_inset_shadow"
             android:layout_weight="1"
-            android:text="@string/false_button" />
+            android:backgroundTint="#009688"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:text="@string/false_button"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFFFF"
+            android:textSize="16sp"
+            tools:ignore="TextContrastCheck" />
     </LinearLayout>
 </LinearLayout>
