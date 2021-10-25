@@ -53,25 +53,23 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-
-        <ImageButton
+        <Button
             android:id="@+id/previous_question_button"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/arrow_left"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck"
-            android:contentDescription="TODO" />
+            android:layout_margin="@dimen/cardview_compat_inset_shadow"
+            android:layout_marginHorizontal="@dimen/cardview_compat_inset_shadow"
+            android:text="@string/previous_question_button" />
 
-        <ImageButton
+        <Button
             android:id="@+id/next_question_button"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/arrow_right"
-            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck"
-            android:contentDescription="TODO" />
-
+            android:layout_margin="@dimen/cardview_compat_inset_shadow"
+            android:layout_marginHorizontal="@dimen/cardview_compat_inset_shadow"
+            android:text="@string/next_question_button" />
     </LinearLayout>
 
 </LinearLayout>
