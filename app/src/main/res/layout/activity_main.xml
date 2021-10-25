@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#DDADAD"
+    android:foregroundTint="@color/purple_200"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -15,7 +17,7 @@
         android:padding="24dp"
         android:text="@string/question_text"
         android:textAlignment="center"
-        android:textColor="#2E0D43"
+        android:textColor="#A13987"
         android:textSize="34sp" />
 
     <LinearLayout
@@ -29,7 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/true_button"
-            app:iconTint="#D1B0B0"
+            app:iconTint="#C19A9A"
+            app:rippleColor="#AA7676"
             app:strokeColor="#6E0A0A" />
 
         <Button
@@ -39,6 +42,8 @@
             android:layout_gravity="bottom"
             android:layout_weight="1"
             android:text="@string/false_button"
-            app:strokeColor="#4E1D1D" />
+            app:iconTint="#000000"
+            app:rippleColor="#3A1111"
+            app:strokeColor="#731A1A" />
     </LinearLayout>
 </LinearLayout>
