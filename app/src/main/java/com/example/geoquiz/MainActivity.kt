@@ -19,14 +19,14 @@ class MainActivity : AppCompatActivity() {
         trueButton = findViewById(R.id.true_button)
 
         falseButton.setOnClickListener {
-            val toast1 = Toast.makeText(this, R.string.incorrect_toast
+            val toast1 = Toast.makeText(this, R.string.correct_toast
                 , Toast.LENGTH_LONG)
             toast1.setGravity(Gravity.TOP, 0, 300)
             toast1.show()
 
 
             trueButton.setOnClickListener {
-                val toast = Toast.makeText(this, R.string.correct_toast
+                val toast = Toast.makeText(this, R.string.incorrect_toast
                     , Toast.LENGTH_SHORT)
                 toast.setGravity(Gravity.TOP, 0, 300)
                 toast.show()
