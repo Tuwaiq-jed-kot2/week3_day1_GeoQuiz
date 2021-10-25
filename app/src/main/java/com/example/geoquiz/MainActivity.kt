@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         falseButton.setOnClickListener {
             Toast.makeText(this,R.string.incorrect_toast,Toast.LENGTH_LONG)
-            Toast.setGravty(Gravity.TOP,30.0)
-            Toast.show()
+//            Toast.setGravty(Gravity.TOP,30.0)
+//            Toast.show()
         }
 
         trueButton.setOnClickListener {
