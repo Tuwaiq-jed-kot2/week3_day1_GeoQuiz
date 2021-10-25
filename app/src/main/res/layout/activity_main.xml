@@ -4,19 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/exam1"
+    android:backgroundTint="#B69D9D"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="match_parent"
+        android:layout_width="432dp"
         android:layout_height="wrap_content"
         android:padding="24dp"
         android:text="@string/question_text"
         android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="24sp" />
+        android:textColor="#0A444A"
+        android:textSize="34sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -27,14 +29,30 @@
             android:id="@+id/true_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_weight="1"
-            android:text="@string/true_button" />
+            android:backgroundTint="#D39494"
+            android:text="@string/true_button"
+            android:textColor="#254245"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:icon="@android:drawable/btn_star_big_on"
+            app:iconTint="#E2E8DD1F" />
 
         <Button
             android:id="@+id/false_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_weight="1"
-            android:text="@string/false_button" />
+            android:backgroundTint="#D39494"
+            android:text="@string/false_button"
+            android:textColor="#254245"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:icon="@android:drawable/btn_star_big_on"
+            app:iconTint="#E2E8DD1F" />
     </LinearLayout>
 </LinearLayout>
