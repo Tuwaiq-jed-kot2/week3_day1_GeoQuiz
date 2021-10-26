@@ -9,6 +9,8 @@
     <string name="fifth_question"> KSA population is less than 30 million  </string>
     <string name="sixth_question"> KIA is a south korean car company  </string>
 
+    <string name="score_Tv">score: 0/6</string>
+
     // buttons
 
     <string name="true_button">True</string>

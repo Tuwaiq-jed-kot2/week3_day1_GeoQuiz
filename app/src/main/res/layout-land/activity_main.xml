@@ -9,6 +9,12 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/score_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/score_Tv" />
+
+    <TextView
         android:id="@+id/question_Tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,23 +59,21 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/previous_question_button"
-            style="?android:attr/buttonBarButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/cardview_compat_inset_shadow"
-            android:layout_marginHorizontal="@dimen/cardview_compat_inset_shadow"
-            android:text="@string/previous_question_button" />
 
-        <Button
-            android:id="@+id/next_question_button"
-            style="?android:attr/buttonBarButtonStyle"
+        <ImageButton
+            android:id="@+id/previous_question_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/cardview_compat_inset_shadow"
-            android:layout_marginHorizontal="@dimen/cardview_compat_inset_shadow"
-            android:text="@string/next_question_button" />
+            android:layout_weight="1"
+            app:srcCompat="@drawable/arrow_left" />
+
+        <ImageButton
+            android:id="@+id/next_question_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/arrow_right" />
+
     </LinearLayout>
 
 </LinearLayout>
