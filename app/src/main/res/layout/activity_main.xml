@@ -2,12 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/text"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DDADAD"
     android:foregroundTint="@color/purple_200"
     android:gravity="center"
     android:orientation="vertical"
+    app:layout_anchorGravity="top"
     tools:context=".MainActivity">
 
     <TextView
@@ -29,10 +31,13 @@
             android:id="@+id/true_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
+            android:layout_gravity="top"
+            android:layout_marginLeft="i5dp"
             android:layout_weight="1"
             android:backgroundTint="#261B3A"
+            android:foregroundGravity="top"
             android:text="@string/true_button"
+            app:iconGravity="top"
             app:iconTint="#C19A9A"
             app:rippleColor="#AA7676"
             app:strokeColor="#6E0A0A" />
@@ -40,9 +45,9 @@
         <Button
             android:id="@+id/false_button"
             android:layout_width="72dp"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:layout_margin="15dp"
+            android:layout_marginRight="15dp"
             android:layout_weight="1"
             android:backgroundTint="#271940"
             android:text="@string/false_button"
