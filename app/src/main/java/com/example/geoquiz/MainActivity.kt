@@ -1,13 +1,18 @@
 package com.example.geoquiz
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import android.view.Gravity
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+
+private const val key_index = "index"
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,84 +22,64 @@ class MainActivity : AppCompatActivity() {
    private lateinit var nextButton: ImageButton
    private lateinit var previousButton: ImageButton
    private lateinit var questionTextView:TextView
+   private lateinit var score_Tv:TextView
 
-   // question bank
-   private val questionsBank = listOf(
-       Questions(R.string.first_question,true),
-       Questions(R.string.second_question,false),
-       Questions(R.string.third_question,false),
-       Questions(R.string.fourth_question,true),
-       Questions(R.string.fifth_question,false),
-       Questions(R.string.sixth_question,true)
-   )
-
-    private var currentIndex = 0
+   private var score = 0
 
     val TAG = "MainActivity"
+
+    private val quizViewModel by lazy {ViewModelProvider(this).get(QuizViewModel::class.java)}
 
     // function
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val currentIndex = savedInstanceState?.getInt(key_index) ?: 0
+        Log.d(TAG,"bundle val : $currentIndex")
+        quizViewModel.currentIndex = currentIndex
         Log.d(TAG,"onCreate()")
+
+        Log.d(TAG,"Hi I'm ViewModel from main activity $quizViewModel")
 
         falseButton = findViewById(R.id.false_button)
         trueButton = findViewById(R.id.true_button)
         nextButton = findViewById(R.id.next_question_button)
         previousButton = findViewById(R.id.previous_question_button)
         questionTextView = findViewById(R.id.question_Tv)
+        score_Tv = findViewById(R.id.score_TV)
+
 
 
         falseButton.setOnClickListener {
             checkAnswer(false)
+            updateQuestion()
         }
 
         trueButton.setOnClickListener {
             checkAnswer(true)
+            updateQuestion()
         }
 
         nextButton.setOnClickListener {
-            try{
-                currentIndex = (currentIndex + 1)
-                updateQuestion()
-            }catch (e:ArrayIndexOutOfBoundsException){
-                val toast = Toast.makeText(this,R.string.maximum_index,Toast.LENGTH_LONG)
-                toast.setGravity(Gravity.TOP,0,0)
-                toast.show()
-                currentIndex--
-            }
-
+            quizViewModel.nextQuestion()
+            updateQuestion()
         }
 
         previousButton.setOnClickListener {
-            try {
-
-                currentIndex = (currentIndex - 1)
-                updateQuestion()
-            } catch (e: ArrayIndexOutOfBoundsException) {
-                val toast = Toast.makeText(this, R.string.negative_index, Toast.LENGTH_LONG)
-                toast.setGravity(Gravity.TOP, 0, 0)
-                toast.show()
-                currentIndex++
-            }
+            quizViewModel.previousQuestion()
+            updateQuestion()
 
         }
-            questionTextView.setOnClickListener{
-                try{
-                    currentIndex = (currentIndex + 1)
-                    updateQuestion()
-                }catch (e:ArrayIndexOutOfBoundsException){
-                    val toast = Toast.makeText(this,R.string.maximum_index,Toast.LENGTH_LONG)
-                    toast.setGravity(Gravity.TOP,0,0)
-                    toast.show()
-                    currentIndex--
-                }
-            }
 
 
         updateQuestion()
+    }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        Log.d(TAG," a value been saved")
+        outState.putInt(key_index,quizViewModel.currentIndex)
     }
 
     override fun onStart() {
@@ -128,18 +113,23 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateQuestion() {
-        val questionTextResid = questionsBank[currentIndex].textResId
+        val questionTextResid = quizViewModel.currentQuestionText
         questionTextView.setText(questionTextResid)
+        falseButton.isEnabled = !quizViewModel.currentQuestionIsAnswered
+        trueButton.isEnabled = !quizViewModel.currentQuestionIsAnswered
+
     }
 
     private fun checkAnswer(userAnswer:Boolean){
-        val correctAnswer = questionsBank[currentIndex].answer
+        val correctAnswer = quizViewModel.currentQuestionAnswer
 
 
         if (userAnswer == correctAnswer){
             val toast = Toast.makeText(this,R.string.correct_toast,Toast.LENGTH_LONG)
             toast.setGravity(Gravity.TOP,0,0)
             toast.show()
+            quizViewModel.currentQuestionIsAnswered = true
+            updateScore()
         }else {
             val toast = Toast.makeText(this,R.string.incorrect_toast,Toast.LENGTH_LONG)
             toast.setGravity(Gravity.TOP,0,0)
@@ -147,5 +137,12 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun updateScore () {
+        score++
+
+        score_Tv.text = "score: $score/6"
     }
 }
