@@ -42,10 +42,11 @@
             android:layout_margin="@dimen/cardview_compat_inset_shadow"
             android:layout_marginHorizontal="@dimen/cardview_compat_inset_shadow"
             android:layout_weight="1"
+            android:background="#673AB7"
             android:text="@string/true_button"
             app:iconTint="#155463"
             app:rippleColor="#AF2828"
-            app:strokeColor="#C63939" />
+            />
 
         <Button
             android:id="@+id/false_button"
@@ -82,5 +83,20 @@
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck" />
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/cheat_button"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/cardview_compat_inset_shadow"
+            android:layout_marginHorizontal="@dimen/cardview_compat_inset_shadow"
+            android:layout_weight="1"
+            android:text="@string/cheat_button" />
+
+    </LinearLayout>
 </LinearLayout>

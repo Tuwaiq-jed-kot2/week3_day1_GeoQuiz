@@ -1,28 +1,33 @@
 package com.example.geoquiz
 
+
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
-import android.view.Gravity
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 
 private const val key_index = "index"
+const val EXTRA_ANSWER_IS_TRUE_OR_FALSE = "CheatActivity"
+const val EXTRA_QUESTION_TEXT = "question text"
+const val EXTRA_IS_ENABLED = "is enabled"
+private const val REQUEST_CODE_CHEAT = 0
 
 class MainActivity : AppCompatActivity() {
 
     // buttons
-   private lateinit var falseButton:Button
-   private lateinit var trueButton:Button
+    lateinit var falseButton:Button
+    lateinit var trueButton:Button
    private lateinit var nextButton: ImageButton
    private lateinit var previousButton: ImageButton
-   private lateinit var questionTextView:TextView
-   private lateinit var score_Tv:TextView
+    lateinit var questionTextView:TextView
+   private lateinit var scoreTv:TextView
+   private lateinit var cheatButton: Button
 
    private var score = 0
 
@@ -47,7 +52,8 @@ class MainActivity : AppCompatActivity() {
         nextButton = findViewById(R.id.next_question_button)
         previousButton = findViewById(R.id.previous_question_button)
         questionTextView = findViewById(R.id.question_Tv)
-        score_Tv = findViewById(R.id.score_TV)
+        scoreTv = findViewById(R.id.score_TV)
+        cheatButton = findViewById(R.id.cheat_button)
 
 
 
@@ -72,6 +78,15 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        cheatButton.setOnClickListener {
+            val intent = Intent(this , CheatActivity::class.java)
+            intent.putExtra(EXTRA_ANSWER_IS_TRUE_OR_FALSE,quizViewModel.currentQuestionAnswer)
+            intent.putExtra(EXTRA_QUESTION_TEXT,quizViewModel.currentQuestionText)
+            startActivityForResult(intent, REQUEST_CODE_CHEAT)
+            startActivity(intent)
+
+        }
+
 
         updateQuestion()
     }
@@ -82,35 +97,6 @@ class MainActivity : AppCompatActivity() {
         outState.putInt(key_index,quizViewModel.currentIndex)
     }
 
-    override fun onStart() {
-        super.onStart()
-        Log.d(TAG,"onStart()")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d(TAG,"onResume()")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(TAG,"onStop()")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.d(TAG,"onRestart()")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(TAG,"onPause()")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d(TAG,"onDestroy()")
-    }
 
     private fun updateQuestion() {
         val questionTextResid = quizViewModel.currentQuestionText
@@ -124,17 +110,10 @@ class MainActivity : AppCompatActivity() {
         val correctAnswer = quizViewModel.currentQuestionAnswer
 
 
-        if (userAnswer == correctAnswer){
-            val toast = Toast.makeText(this,R.string.correct_toast,Toast.LENGTH_LONG)
-            toast.setGravity(Gravity.TOP,0,0)
-            toast.show()
-            quizViewModel.currentQuestionIsAnswered = true
-            updateScore()
-        }else {
-            val toast = Toast.makeText(this,R.string.incorrect_toast,Toast.LENGTH_LONG)
-            toast.setGravity(Gravity.TOP,0,0)
-            toast.show()
-
+        val toastMessage = when {
+            quizViewModel.isCheater -> R.string.cheat_judgment
+            userAnswer == correctAnswer -> R.string.correct_toast
+            else -> R.string.incorrect_toast
         }
 
     }
@@ -143,6 +122,19 @@ class MainActivity : AppCompatActivity() {
     private fun updateScore () {
         score++
 
-        score_Tv.text = "score: $score/6"
+        scoreTv.text = "score: $score/6"
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode != Activity.RESULT_OK){
+            return
+        }
+
+        if (requestCode == REQUEST_CODE_CHEAT){
+            quizViewModel.isCheater = data?.getBooleanExtra(EXTRA_ANSWER_SHOWN,false) ?: false
+        }
+
     }
 }

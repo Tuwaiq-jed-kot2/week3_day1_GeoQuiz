@@ -1,8 +1,5 @@
 package com.example.geoquiz
 
-import android.util.Log
-import android.view.Gravity
-import android.widget.Toast
 import androidx.lifecycle.ViewModel
 
 private const val TAG = "QuizViewModel"
@@ -19,6 +16,8 @@ class QuizViewModel : ViewModel() {
     )
 
     var currentIndex = 0
+
+    var isCheater = false
 
     val currentQuestionText : Int
                 get () = questionsBank[currentIndex].textResId
