@@ -27,14 +27,26 @@
             android:id="@+id/true_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:layout_weight="1"
-            android:text="@string/true_button" />
+            android:text="@string/true_button"
+            android:textColor="#050E42"
+            android:textColorHighlight="#EFD9D9"
+            android:textSize="24sp"
+            app:backgroundTint="#A15670"/>
 
         <Button
             android:id="@+id/false_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:layout_weight="1"
-            android:text="@string/false_button" />
+            android:text="@string/false_button"
+            android:textColor="#050E42"
+            android:textColorHighlight="#EFD9D9"
+            android:textSize="24sp"
+            app:backgroundTint="#A15670"/>
+
     </LinearLayout>
+
 </LinearLayout>
