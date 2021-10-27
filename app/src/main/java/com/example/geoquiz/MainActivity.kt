@@ -1,6 +1,4 @@
 package com.example.geoquiz
-
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -29,8 +27,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        Toast.makeText(applicationContext,"onCreate",Toast.LENGTH_SHORT).show();
-        Log.d(TAG, "onCreate called")
+        Log.d(TAG, "onCreate")
         Log.d(TAG, "Hi Iam viewModel from MainActivity ()")
 
         // Bundle 3
@@ -86,40 +83,32 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.d(TAG, "onStart() called")
-        Toast.makeText(applicationContext,"onStart",Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onStart()")
     }
+
 
     override fun onResume() {
         super.onResume()
-        Log.d(TAG, "onResume() called")
-        Toast.makeText(applicationContext,"onResume",Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onResume()")
 
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(TAG, "onPause() called")
-        Toast.makeText(applicationContext,"onPause",Toast.LENGTH_SHORT).show();
     }
 
     override fun onStop() {
         super.onStop()
-        Log.d(TAG, "onStop() called")
-        Toast.makeText(applicationContext,"onStop",Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onStop()")
     }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause()")
+    }
+
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d(TAG, "onDestroy called")
-        Toast.makeText(applicationContext,"onDestroy",Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onDestroy")
     }
 
-    override fun onRestart() {
-        super.onRestart()
-        Log.d(TAG,"onrestart")
-        Toast.makeText(applicationContext,"onrestart",Toast.LENGTH_SHORT).show();
-    }
 
     private fun updateQuestion() {
 
@@ -145,6 +134,8 @@ class MainActivity : AppCompatActivity() {
             trueButton.isClickable = true
             falseButton.isClickable = true
         }
+
+
     }
 
 }
