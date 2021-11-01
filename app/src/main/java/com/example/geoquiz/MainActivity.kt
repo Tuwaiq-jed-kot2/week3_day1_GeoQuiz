@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        fun setGravity(gravity: Int, xOffset: Int, yOffset: Int): Unit{}
 
         falseButton = findViewById(R.id.false_button)
         trueButton = findViewById(R.id.true_button)
