@@ -44,7 +44,7 @@ class CheatActivity : AppCompatActivity() {
         }
     }
 
-    fun setAnswerShownResult(){
+    private fun setAnswerShownResult(){
         val intent  = Intent()
            intent.putExtra(EXTRA_ANSWER_SHOWN,true)
 

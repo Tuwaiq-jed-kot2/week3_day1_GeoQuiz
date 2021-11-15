@@ -12,6 +12,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 
@@ -40,28 +41,23 @@ class MainActivity : AppCompatActivity() {
     private val quizViewModel   by lazy {    ViewModelProvider(this).get(QuizViewModel::class.java)}
 
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        Log.d(TAG,"the result code is  $resultCode")
 
-        if (resultCode != Activity.RESULT_OK){
-            return
+
+
+    private val  getCheateingResultLncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+
+            if (it.resultCode == Activity.RESULT_OK){
+                quizViewModel.isCheater = it.data?.getBooleanExtra(EXTRA_ANSWER_SHOWN,false) ?:false
+
+            }
+
         }
-
-        if (requestCode == REQUEST_CODE_CHEAT){
-
-            quizViewModel.isCheater = data?.getBooleanExtra(EXTRA_ANSWER_SHOWN,false) ?:false
-        }
-
-
-
-    }
-
-@SuppressLint("svjhdfgsh")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
-        Log.d(TAG,"onCreate()")
+
 
         val currentIndex =  savedInstanceState?.getInt(KEY_INDEX) ?: 0
         Log.d(TAG , "bundle val : $currentIndex ")
@@ -81,13 +77,11 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra(EXTRA_ANSWER_IS_TRUE_OR_FALSE,quizViewModel.currentQuestionAnswer)
             intent.putExtra(EXTRA_QUSETION_TEXT,quizViewModel.currentQuestionText)
 
+            getCheateingResultLncher.launch(intent)
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                ActivityOptions
-                    .makeClipRevealAnimation(it, 0, 0, it.width, it.height)
-            }
 
-            startActivityForResult(intent, REQUEST_CODE_CHEAT)
+
+           // startActivityForResult(intent, REQUEST_CODE_CHEAT)
 
         }
 
